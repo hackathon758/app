@@ -1,6 +1,29 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import {
+  SiJavascript,
+  SiPython,
+  SiOpenjdk,
+  SiReact,
+  SiNextdotjs,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiPostman,
+  SiMongodb,
+  SiMysql,
+  SiFastapi,
+  SiTensorflow,
+  SiOpenai,
+  SiPytorch,
+  SiPandas,
+  SiGit,
+  SiGithub,
+  SiVisualstudiocode,
+  SiDocker,
+} from 'react-icons/si';
 
 const Skills3D = ({ data }) => {
   const [ref, inView] = useInView({
