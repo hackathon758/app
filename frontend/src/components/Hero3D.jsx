@@ -1,7 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Hero3D = ({ data }) => {
+  const roles = [
+    'Full Stack Web Developer',
+    'Software Developer',
+    'Software Engineer',
+    'Data Analyst',
+    'Data Engineer'
+  ];
+
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(100);
+
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing forward
+        if (displayedText.length < currentRole.length) {
+          setDisplayedText(currentRole.substring(0, displayedText.length + 1));
+          setTypingSpeed(100);
+        } else {
+          // Pause at the end before deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting backward
+        if (displayedText.length > 0) {
+          setDisplayedText(currentRole.substring(0, displayedText.length - 1));
+          setTypingSpeed(50);
+        } else {
+          // Move to next role
+          setIsDeleting(false);
+          setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, currentRoleIndex, typingSpeed, roles]);
+
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1a1a2e] to-[#16213e]">
       {/* Animated background elements */}
