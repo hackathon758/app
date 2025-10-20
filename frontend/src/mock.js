@@ -54,8 +54,8 @@ export const mockData = {
       { name: "VS Code", icon: "SiVscodium", color: "#007ACC" },
       { name: "Docker", icon: "SiDocker", color: "#2496ED" },
       { name: "Postman", icon: "SiPostman", color: "#FF6C37" },
-      { name: "AWS", icon: "SiAmazonaws", color: "#FF9900" },
-      { name: "Power BI", icon: "SiPowerbi", color: "#F2C811" },
+      { name: "AWS", icon: "SiAmazonwebservices", color: "#FF9900" },
+      { name: "Power BI", icon: "SiMicrosoftpowerbi", color: "#F2C811" },
       { name: "Tableau", icon: "SiTableau", color: "#E97627" }
     ]
   },
