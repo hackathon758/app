@@ -1,19 +1,20 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial, Html } from '@react-three/drei';
+import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import * as THREE from 'three';
 
 // Animated sphere component
 function AnimatedSphere() {
   const meshRef = useRef();
 
   useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    meshRef.current.rotation.x = Math.cos(t / 4) / 8;
-    meshRef.current.rotation.y = Math.sin(t / 4) / 8;
-    meshRef.current.rotation.z = Math.sin(t / 1.5) / 20;
-    meshRef.current.position.y = Math.sin(t / 1.5) / 10;
+    if (meshRef.current) {
+      const t = state.clock.getElapsedTime();
+      meshRef.current.rotation.x = Math.cos(t / 4) / 8;
+      meshRef.current.rotation.y = Math.sin(t / 4) / 8;
+      meshRef.current.rotation.z = Math.sin(t / 1.5) / 20;
+      meshRef.current.position.y = Math.sin(t / 1.5) / 10;
+    }
   });
 
   return (
@@ -31,7 +32,7 @@ function AnimatedSphere() {
 }
 
 // Floating particles
-function Particles({ count = 2000 }) {
+function Particles({ count = 1000 }) {
   const meshRef = useRef();
 
   const particles = useMemo(() => {
@@ -48,33 +49,37 @@ function Particles({ count = 2000 }) {
     return temp;
   }, [count]);
 
-  const dummy = useMemo(() => new THREE.Object3D(), []);
-
   useFrame(() => {
-    particles.forEach((particle, i) => {
-      let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
-      t = particle.t += speed / 2;
-      const a = Math.cos(t) + Math.sin(t * 1) / 10;
-      const b = Math.sin(t) + Math.cos(t * 2) / 10;
-      const s = Math.cos(t);
-      dummy.position.set(
-        (particle.mx / 10) * a + xFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 1) * factor) / 10,
-        (particle.my / 10) * b + yFactor + Math.sin((t / 10) * factor) + (Math.cos(t * 2) * factor) / 10,
-        (particle.my / 10) * b + zFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 3) * factor) / 10
-      );
-      dummy.scale.set(s, s, s);
-      dummy.rotation.set(s * 5, s * 5, s * 5);
-      dummy.updateMatrix();
-      meshRef.current.setMatrixAt(i, dummy.matrix);
-    });
-    meshRef.current.instanceMatrix.needsUpdate = true;
+    if (meshRef.current) {
+      particles.forEach((particle, i) => {
+        let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
+        t = particle.t += speed / 2;
+        const a = Math.cos(t) + Math.sin(t * 1) / 10;
+        const b = Math.sin(t) + Math.cos(t * 2) / 10;
+        const s = Math.cos(t);
+        
+        const dummy = meshRef.current.children[i];
+        if (dummy) {
+          dummy.position.set(
+            (particle.mx / 10) * a + xFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 1) * factor) / 10,
+            (particle.my / 10) * b + yFactor + Math.sin((t / 10) * factor) + (Math.cos(t * 2) * factor) / 10,
+            (particle.my / 10) * b + zFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 3) * factor) / 10
+          );
+          dummy.scale.set(Math.abs(s) * 0.5, Math.abs(s) * 0.5, Math.abs(s) * 0.5);
+        }
+      });
+    }
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[null, null, count]}>
-      <dodecahedronGeometry args={[0.1, 0]} />
-      <meshPhongMaterial color="#00d9ff" />
-    </instancedMesh>
+    <group ref={meshRef}>
+      {particles.map((_, i) => (
+        <mesh key={i}>
+          <dodecahedronGeometry args={[0.1, 0]} />
+          <meshPhongMaterial color="#00d9ff" />
+        </mesh>
+      ))}
+    </group>
   );
 }
 
