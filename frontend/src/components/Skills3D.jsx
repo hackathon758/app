@@ -5,6 +5,8 @@ import {
   SiJavascript,
   SiPython,
   SiOpenjdk,
+  SiGo,
+  SiR,
   SiReact,
   SiNextdotjs,
   SiHtml5,
@@ -19,10 +21,15 @@ import {
   SiOpenai,
   SiPytorch,
   SiPandas,
+  SiApachespark,
+  SiApacheairflow,
   SiGit,
   SiGithub,
   SiVscodium,
   SiDocker,
+  SiAmazonaws,
+  SiPowerbi,
+  SiTableau,
 } from 'react-icons/si';
 
 const Skills3D = ({ data }) => {
