@@ -27,8 +27,8 @@ import {
   SiGithub,
   SiVscodium,
   SiDocker,
-  SiAmazonaws,
-  SiPowerbi,
+  SiAmazonwebservices,
+  SiMicrosoftpowerbi,
   SiTableau,
 } from 'react-icons/si';
 
