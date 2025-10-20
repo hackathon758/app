@@ -75,8 +75,8 @@ const Skills3D = ({ data }) => {
     SiGithub,
     SiVscodium,
     SiDocker,
-    SiAmazonaws,
-    SiPowerbi,
+    SiAmazonwebservices,
+    SiMicrosoftpowerbi,
     SiTableau,
   };
 
