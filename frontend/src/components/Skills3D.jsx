@@ -25,7 +25,7 @@ import {
   SiApacheairflow,
   SiGit,
   SiGithub,
-  SiVscodium,
+  SiVisualstudiocode,
   SiDocker,
   SiAmazonwebservices,
   SiTableau,
