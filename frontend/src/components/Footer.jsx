@@ -1,7 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Linkedin, Github, Mail } from 'lucide-react';
 
 const Footer = ({ data }) => {
+  const roles = [
+    'Full Stack Web Developer',
+    'Software Developer',
+    'Software Engineer',
+    'Data Analyst',
+    'Data Engineer'
+  ];
+
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(100);
+
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing forward
+        if (displayedText.length < currentRole.length) {
+          setDisplayedText(currentRole.substring(0, displayedText.length + 1));
+          setTypingSpeed(100);
+        } else {
+          // Pause at the end before deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting backward
+        if (displayedText.length > 0) {
+          setDisplayedText(currentRole.substring(0, displayedText.length - 1));
+          setTypingSpeed(50);
+        } else {
+          // Move to next role
+          setIsDeleting(false);
+          setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, currentRoleIndex, typingSpeed, roles]);
+
   return (
     <footer className="bg-gradient-to-b from-[#1a1a2e] to-[#0f172a] border-t border-white/10 py-12">
       <div className="max-w-7xl mx-auto px-6">
