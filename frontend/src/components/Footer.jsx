@@ -57,7 +57,10 @@ const Footer = ({ data }) => {
                 {data.name}
               </span>
             </h3>
-            <p className="text-gray-400">{data.title}</p>
+            <p className="text-gray-400 min-h-[1.5rem] flex items-center">
+              <span>{displayedText}</span>
+              <span className="animate-blink-footer ml-1">|</span>
+            </p>
             <p className="text-gray-500 text-sm mt-2">{data.tagline}</p>
           </div>
 
