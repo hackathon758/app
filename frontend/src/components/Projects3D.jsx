@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight, Award } from 'lucide-react';
 
 const Projects3D = ({ data }) => {
   const [ref, inView] = useInView({
@@ -9,8 +9,18 @@ const Projects3D = ({ data }) => {
     threshold: 0.1,
   });
 
+  const [selectedCategory, setSelectedCategory] = useState('applications');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  // Get projects based on selected category
+  const currentProjects = data[selectedCategory] || [];
+  const currentProject = currentProjects[currentIndex] || {};
+
+  const categories = [
+    { key: 'applications', label: 'Applications', color: 'from-[#00d9ff] to-[#0099cc]' },
+    { key: 'dataScience', label: 'Data Science', color: 'from-[#6bcf7f] to-[#55a665]' },
+  ];
 
   const slideVariants = {
     hiddenRight: {
@@ -39,15 +49,19 @@ const Projects3D = ({ data }) => {
 
   const handleNext = () => {
     setDirection(1);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % currentProjects.length);
   };
 
   const handlePrevious = () => {
     setDirection(-1);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + currentProjects.length) % currentProjects.length);
   };
 
-  const currentProject = data[currentIndex];
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setCurrentIndex(0);
+    setDirection(0);
+  };
 
   return (
     <section id="projects" className="py-24 bg-gradient-to-b from-[#0f172a] to-[#1a1a2e] overflow-hidden">
