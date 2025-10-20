@@ -93,7 +93,7 @@ const Hero3D = ({ data }) => {
           <directionalLight position={[10, 10, 5]} intensity={1} />
           <pointLight position={[-10, -10, -10]} color="#ff6b6b" intensity={0.5} />
           <pointLight position={[10, 10, 10]} color="#00d9ff" intensity={0.5} />
-          <Particles count={1500} />
+          <Particles count={800} />
           <AnimatedSphere />
           <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
         </Canvas>
