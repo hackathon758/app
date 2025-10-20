@@ -60,88 +60,93 @@ export const mockData = {
     ]
   },
 
-  projects: [
-    {
-      id: 1,
-      title: "Cross-Language Code Vulnerability Analyzer",
-      shortDesc: "AI-powered security vulnerability detection system",
-      description: "Developed a unified vulnerability detection system for 5+ programming languages, identifying 95% of security vulnerabilities. Implemented a machine learning-powered pattern recognition system with taint analysis, creating a visualization dashboard and automated remediation engine that reduced security blind spots by 85%.",
-      technologies: ["Python", "Java", "JavaScript", "Machine Learning", "AST Parsers"],
-      image: "https://images.unsplash.com/photo-1605379399642-870262d3d051?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc2MDg4ODc3MXww&ixlib=rb-4.1.0&q=85",
-      link: "#",
-      github: "#",
-      highlights: [
-        "95% vulnerability detection rate",
-        "Supports 5+ programming languages",
-        "85% reduction in security blind spots",
-        "Automated remediation engine"
-      ]
-    },
-    {
-      id: 2,
-      title: "Interactive Health Data Visualization Dashboard",
-      shortDesc: "Real-time analytics dashboard for healthcare events",
-      description: "Developed a responsive event analytics dashboard using React.js for real-time data visualization for 50,000+ event participants. Implemented a Java Spring Boot backend for ensemble algorithms. Built a MySQL database integration with optimized SQL queries for efficient data handling and processing.",
-      technologies: ["React.js", "Java Spring Boot", "PostgreSQL", "Data Visualization"],
-      image: "https://images.unsplash.com/photo-1579403124614-197f69d8187b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc2MDg4ODc3MXww&ixlib=rb-4.1.0&q=85",
-      link: "#",
-      github: "#",
-      highlights: [
-        "50,000+ active participants",
-        "Real-time data visualization",
-        "Optimized SQL queries",
-        "Java Spring Boot backend"
-      ]
-    },
-    {
-      id: 3,
-      title: "E-commerce Product Clustering Interface",
-      shortDesc: "AI-powered networking platform with smart matching",
-      description: "Created a full-stack webinar networking application. Implemented participant clustering algorithms for connecting attendees based on interests, resulting in 85% improved networking engagement. Designed a relational MySQL database schema with advanced graph algorithms for real-time participant matching, achieving sub-100ms response times for 800+ simultaneous users.",
-      technologies: ["React.js", "Java", "MySQL", "Graph Algorithms", "Clustering ML"],
-      image: "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwzfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc2MDg4ODc3MXww&ixlib=rb-4.1.0&q=85",
-      link: "#",
-      github: "#",
-      highlights: [
-        "85% improved networking engagement",
-        "Sub-100ms response times",
-        "800+ simultaneous users",
-        "AI-powered clustering algorithms"
-      ]
-    },
-    {
-      id: 4,
-      title: "Agricultural Health Monitoring Platform",
-      shortDesc: "Scalable platform for agricultural disease detection",
-      description: "Built a scalable agricultural conference platform supporting 15,000+ professionals. Features include event scheduling, speaker management, and real-time disease detection workshops. Implemented a robust PostgreSQL database architecture with RESTful APIs and utilized efficient algorithms for image processing workflows, resolving 95+ platform bugs.",
-      technologies: ["React.js", "PostgreSQL", "RESTful APIs", "Image Processing"],
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHx0ZWNobm9sb2d5fGVufDB8fHx8MTc2MDg5MjkxM3ww&ixlib=rb-4.1.0&q=85",
-      link: "#",
-      github: "#",
-      highlights: [
-        "15,000+ professionals supported",
-        "Real-time disease detection",
-        "95+ bugs resolved",
-        "Robust PostgreSQL architecture"
-      ]
-    },
-    {
-      id: 5,
-      title: "DNA Cryptographic Security System",
-      shortDesc: "Enterprise-grade encryption using genetic algorithms",
-      description: "Developed an enterprise-grade event security platform using React.js interface encryption, protecting sensitive event data for 25,000+ participants. Implemented a comprehensive MongoDB database security framework with algorithmic optimization, ensuring GDPR compliance and maintaining 99.8% uptime.",
-      technologies: ["React.js", "MongoDB", "Encryption", "Genetic Algorithms"],
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwzfHx0ZWNobm9sb2d5fGVufDB8fHx8MTc2MDg5MjkxM3ww&ixlib=rb-4.1.0&q=85",
-      link: "#",
-      github: "#",
-      highlights: [
-        "25,000+ participants protected",
-        "99.8% uptime",
-        "GDPR compliant",
-        "Genetic algorithm encryption"
-      ]
-    }
-  ],
+  projectCategories: {
+    applications: [
+      {
+        id: 1,
+        title: "Cross-Language Code Vulnerability Analyzer",
+        shortDesc: "AI-powered security vulnerability detection system",
+        description: "Developed a unified vulnerability detection system for 5+ programming languages, identifying 95% of security vulnerabilities. Implemented a machine learning-powered pattern recognition system with taint analysis, creating a visualization dashboard and automated remediation engine that reduced security blind spots by 85%.",
+        technologies: ["Python", "Java", "JavaScript", "Machine Learning", "AST Parsers"],
+        image: "https://images.unsplash.com/photo-1605379399642-870262d3d051?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc2MDg4ODc3MXww&ixlib=rb-4.1.0&q=85",
+        link: "#",
+        github: "#",
+        isAwardWinning: true,
+        highlights: [
+          "95% vulnerability detection rate",
+          "Supports 5+ programming languages",
+          "85% reduction in security blind spots",
+          "Automated remediation engine"
+        ]
+      },
+      {
+        id: 4,
+        title: "Agricultural Health Monitoring Platform",
+        shortDesc: "Scalable platform for agricultural disease detection",
+        description: "Built a scalable agricultural conference platform supporting 15,000+ professionals. Features include event scheduling, speaker management, and real-time disease detection workshops. Implemented a robust PostgreSQL database architecture with RESTful APIs and utilized efficient algorithms for image processing workflows, resolving 95+ platform bugs.",
+        technologies: ["React.js", "PostgreSQL", "RESTful APIs", "Image Processing"],
+        image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHx0ZWNobm9sb2d5fGVufDB8fHx8MTc2MDg5MjkxM3ww&ixlib=rb-4.1.0&q=85",
+        link: "#",
+        github: "#",
+        highlights: [
+          "15,000+ professionals supported",
+          "Real-time disease detection",
+          "95+ bugs resolved",
+          "Robust PostgreSQL architecture"
+        ]
+      },
+      {
+        id: 5,
+        title: "DNA Cryptographic Security System",
+        shortDesc: "Enterprise-grade encryption using genetic algorithms",
+        description: "Developed an enterprise-grade event security platform using React.js interface encryption, protecting sensitive event data for 25,000+ participants. Implemented a comprehensive MongoDB database security framework with algorithmic optimization, ensuring GDPR compliance and maintaining 99.8% uptime.",
+        technologies: ["React.js", "MongoDB", "Encryption", "Genetic Algorithms"],
+        image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwzfHx0ZWNobm9sb2d5fGVufDB8fHx8MTc2MDg5MjkxM3ww&ixlib=rb-4.1.0&q=85",
+        link: "#",
+        github: "#",
+        highlights: [
+          "25,000+ participants protected",
+          "99.8% uptime",
+          "GDPR compliant",
+          "Genetic algorithm encryption"
+        ]
+      }
+    ],
+    dataScience: [
+      {
+        id: 2,
+        title: "Interactive Health Data Visualization Dashboard",
+        shortDesc: "Real-time analytics dashboard for healthcare events",
+        description: "Developed a responsive event analytics dashboard using React.js for real-time data visualization for 50,000+ event participants. Implemented a Java Spring Boot backend for ensemble algorithms. Built a MySQL database integration with optimized SQL queries for efficient data handling and processing.",
+        technologies: ["React.js", "Java Spring Boot", "PostgreSQL", "Data Visualization"],
+        image: "https://images.unsplash.com/photo-1579403124614-197f69d8187b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc2MDg4ODc3MXww&ixlib=rb-4.1.0&q=85",
+        link: "#",
+        github: "#",
+        highlights: [
+          "50,000+ active participants",
+          "Real-time data visualization",
+          "Optimized SQL queries",
+          "Java Spring Boot backend"
+        ]
+      },
+      {
+        id: 3,
+        title: "E-commerce Product Clustering Interface",
+        shortDesc: "AI-powered networking platform with smart matching",
+        description: "Created a full-stack webinar networking application. Implemented participant clustering algorithms for connecting attendees based on interests, resulting in 85% improved networking engagement. Designed a relational MySQL database schema with advanced graph algorithms for real-time participant matching, achieving sub-100ms response times for 800+ simultaneous users.",
+        technologies: ["React.js", "Java", "MySQL", "Graph Algorithms", "Clustering ML"],
+        image: "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwzfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc2MDg4ODc3MXww&ixlib=rb-4.1.0&q=85",
+        link: "#",
+        github: "#",
+        highlights: [
+          "85% improved networking engagement",
+          "Sub-100ms response times",
+          "800+ simultaneous users",
+          "AI-powered clustering algorithms"
+        ]
+      }
+    ]
+  },
 
   achievements: [
     {
