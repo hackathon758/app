@@ -51,7 +51,7 @@ export const mockData = {
     tools: [
       { name: "Git", icon: "SiGit", color: "#F05032" },
       { name: "GitHub", icon: "SiGithub", color: "#181717" },
-      { name: "VS Code", icon: "SiVscodium", color: "#007ACC" },
+      { name: "VS Code", icon: "SiVisualstudiocode", color: "#007ACC" },
       { name: "Docker", icon: "SiDocker", color: "#2496ED" },
       { name: "Postman", icon: "SiPostman", color: "#FF6C37" },
       { name: "AWS", icon: "SiAmazonwebservices", color: "#FF9900" },
