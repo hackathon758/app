@@ -62,7 +62,7 @@ const Skills3D = ({ data }) => {
     SiPandas,
     SiGit,
     SiGithub,
-    SiVisualstudiocode,
+    SiVscodium,
     SiDocker,
   };
 
