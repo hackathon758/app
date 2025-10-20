@@ -21,7 +21,7 @@ import {
   SiPandas,
   SiGit,
   SiGithub,
-  SiVisualstudiocode,
+  SiVscodium,
   SiDocker,
 } from 'react-icons/si';
 
