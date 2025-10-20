@@ -393,6 +393,9 @@ const Hero3D = ({ data }) => {
         .translate-z-5 {
           transform: translateZ(5px);
         }
+        .text-shadow-glow {
+          text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
       `}</style>
     </div>
   );
