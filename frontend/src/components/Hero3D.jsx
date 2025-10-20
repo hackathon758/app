@@ -124,7 +124,7 @@ const Hero3D = ({ data }) => {
         </div>
       </motion.div>
 
-      {/* CSS for blob animation */}
+      {/* CSS for blob and typing animations */}
       <style jsx>{`
         @keyframes blob {
           0% {
@@ -148,6 +148,17 @@ const Hero3D = ({ data }) => {
         }
         .animation-delay-4000 {
           animation-delay: 4s;
+        }
+        @keyframes blink {
+          0%, 50% {
+            opacity: 1;
+          }
+          51%, 100% {
+            opacity: 0;
+          }
+        }
+        .animate-blink {
+          animation: blink 1s infinite;
         }
       `}</style>
     </div>
