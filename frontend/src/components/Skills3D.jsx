@@ -28,9 +28,9 @@ import {
   SiVscodium,
   SiDocker,
   SiAmazonwebservices,
-  SiMicrosoftpowerbi,
   SiTableau,
 } from 'react-icons/si';
+import { FaChartLine } from 'react-icons/fa';
 
 const Skills3D = ({ data }) => {
   const [ref, inView] = useInView({
