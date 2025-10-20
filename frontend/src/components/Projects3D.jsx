@@ -83,6 +83,23 @@ const Projects3D = ({ data }) => {
             </p>
           </div>
 
+          {/* Category Selector */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category.key}
+                onClick={() => handleCategoryChange(category.key)}
+                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  selectedCategory === category.key
+                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg scale-105`
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+
           {/* Project Carousel */}
           <div className="relative">
             <AnimatePresence initial={false} custom={direction}>
