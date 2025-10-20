@@ -75,7 +75,7 @@ const Skills3D = ({ data }) => {
     SiApacheairflow,
     SiGit,
     SiGithub,
-    SiVscodium,
+    SiVisualstudiocode,
     SiDocker,
     SiAmazonwebservices,
     SiTableau,
