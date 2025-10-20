@@ -18,7 +18,9 @@ export const mockData = {
     programmingLanguages: [
       { name: "JavaScript", icon: "SiJavascript", color: "#F7DF1E" },
       { name: "Python", icon: "SiPython", color: "#3776AB" },
-      { name: "Java", icon: "SiOpenjdk", color: "#007396" }
+      { name: "Java", icon: "SiOpenjdk", color: "#007396" },
+      { name: "Go", icon: "SiGo", color: "#00ADD8" },
+      { name: "R", icon: "SiR", color: "#276DC3" }
     ],
     frontend: [
       { name: "React.js", icon: "SiReact", color: "#61DAFB" },
@@ -29,23 +31,32 @@ export const mockData = {
     ],
     backend: [
       { name: "Node.js", icon: "SiNodedotjs", color: "#339933" },
-      { name: "RESTful APIs", icon: "SiPostman", color: "#FF6C37" },
+      { name: "RESTful API", icon: "SiPostman", color: "#FF6C37" },
       { name: "MongoDB", icon: "SiMongodb", color: "#47A248" },
       { name: "MySQL", icon: "SiMysql", color: "#4479A1" },
       { name: "FastAPI", icon: "SiFastapi", color: "#009688" }
     ],
     aiMl: [
       { name: "Machine Learning", icon: "SiTensorflow", color: "#FF6F00" },
+      { name: "TensorFlow", icon: "SiTensorflow", color: "#FF6F00" },
+      { name: "PyTorch", icon: "SiPytorch", color: "#EE4C2C" },
+      { name: "Large Language Models", icon: "SiOpenai", color: "#412991" },
+      { name: "Natural Language Processing", icon: "SiOpenai", color: "#10A37F" },
       { name: "Prompt Engineering", icon: "SiOpenai", color: "#412991" },
       { name: "AI Integration", icon: "SiPytorch", color: "#EE4C2C" },
-      { name: "Data Analytics", icon: "SiPandas", color: "#150458" }
+      { name: "Data Analytics", icon: "SiPandas", color: "#150458" },
+      { name: "Big Data Analytics", icon: "SiApachespark", color: "#E25A1C" },
+      { name: "Data ETL Processing", icon: "SiApacheairflow", color: "#017CEE" }
     ],
     tools: [
       { name: "Git", icon: "SiGit", color: "#F05032" },
       { name: "GitHub", icon: "SiGithub", color: "#181717" },
       { name: "VS Code", icon: "SiVscodium", color: "#007ACC" },
       { name: "Docker", icon: "SiDocker", color: "#2496ED" },
-      { name: "Postman", icon: "SiPostman", color: "#FF6C37" }
+      { name: "Postman", icon: "SiPostman", color: "#FF6C37" },
+      { name: "AWS", icon: "SiAmazonaws", color: "#FF9900" },
+      { name: "Power BI", icon: "SiPowerbi", color: "#F2C811" },
+      { name: "Tableau", icon: "SiTableau", color: "#E97627" }
     ]
   },
 
