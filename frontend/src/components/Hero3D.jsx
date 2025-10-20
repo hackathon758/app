@@ -81,8 +81,9 @@ const Hero3D = ({ data }) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#00d9ff] via-[#ff6b6b] to-[#ffd93d] bg-clip-text text-transparent mb-6">
-                {data.title}
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#00d9ff] via-[#ff6b6b] to-[#ffd93d] bg-clip-text text-transparent mb-6 min-h-[3rem] flex items-center justify-center">
+                <span>{displayedText}</span>
+                <span className="animate-blink ml-1">|</span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
                 {data.tagline}
