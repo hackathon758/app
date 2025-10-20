@@ -137,6 +137,21 @@ const Footer = ({ data }) => {
           </p>
         </div>
       </div>
+
+      {/* CSS for typing animation */}
+      <style jsx>{`
+        @keyframes blink-footer {
+          0%, 50% {
+            opacity: 1;
+          }
+          51%, 100% {
+            opacity: 0;
+          }
+        }
+        .animate-blink-footer {
+          animation: blink-footer 1s infinite;
+        }
+      `}</style>
     </footer>
   );
 };
