@@ -248,7 +248,7 @@ const Projects3D = ({ data }) => {
 
           {/* Progress Indicators */}
           <div className="flex justify-center gap-3 mt-12">
-            {data.map((_, index) => (
+            {currentProjects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => {
