@@ -132,14 +132,22 @@ const Projects3D = ({ data }) => {
                   {/* Project Details */}
                   <div className="space-y-6">
                     <div>
-                      <motion.h3
-                        className="text-3xl md:text-4xl font-black text-white mb-3"
+                      <motion.div
+                        className="flex items-center gap-3 mb-3"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                       >
-                        {currentProject.title}
-                      </motion.h3>
+                        <h3 className="text-3xl md:text-4xl font-black text-white">
+                          {currentProject.title}
+                        </h3>
+                        {currentProject.isAwardWinning && (
+                          <span className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-bold rounded-full">
+                            <Award size={14} />
+                            Award Winning
+                          </span>
+                        )}
+                      </motion.div>
                       <motion.p
                         className="text-lg text-[#00d9ff] font-semibold mb-4"
                         initial={{ opacity: 0, y: 20 }}
