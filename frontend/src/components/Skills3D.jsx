@@ -1,9 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Text, OrbitControls, RoundedBox } from '@react-three/drei';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import * as THREE from 'three';
 
 // 3D Skill Card
 function SkillCard({ position, skill, index }) {
