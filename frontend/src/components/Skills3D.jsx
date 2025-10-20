@@ -41,6 +41,31 @@ const Skills3D = ({ data }) => {
     { key: 'tools', label: 'Tools', color: 'from-[#ff8c42] to-[#cc7035]' },
   ];
 
+  // Icon mapping
+  const iconMap = {
+    SiJavascript,
+    SiPython,
+    SiOpenjdk,
+    SiReact,
+    SiNextdotjs,
+    SiHtml5,
+    SiCss3,
+    SiTailwindcss,
+    SiNodedotjs,
+    SiPostman,
+    SiMongodb,
+    SiMysql,
+    SiFastapi,
+    SiTensorflow,
+    SiOpenai,
+    SiPytorch,
+    SiPandas,
+    SiGit,
+    SiGithub,
+    SiVisualstudiocode,
+    SiDocker,
+  };
+
   return (
     <section id="skills" className="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0f172a]">
       <div className="max-w-7xl mx-auto px-6">
@@ -85,27 +110,29 @@ const Skills3D = ({ data }) => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            {data[selectedCategory]?.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:scale-105 hover:border-[#00d9ff]/50 transition-all duration-300"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="text-white font-semibold mb-3 text-center">{skill.name}</div>
-                <div className="w-full bg-white/10 rounded-full h-3 mb-2">
-                  <motion.div
-                    className="bg-gradient-to-r from-[#00d9ff] to-[#ff6b6b] h-3 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                  />
-                </div>
-                <div className="text-sm text-gray-400 text-center font-semibold">{skill.level}%</div>
-              </motion.div>
-            ))}
+            {data[selectedCategory]?.map((skill, index) => {
+              const IconComponent = iconMap[skill.icon];
+              return (
+                <motion.div
+                  key={index}
+                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:scale-105 hover:border-[#00d9ff]/50 transition-all duration-300 flex flex-col items-center justify-center gap-4"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  whileHover={{ y: -5 }}
+                >
+                  {IconComponent && (
+                    <IconComponent 
+                      className="w-12 h-12" 
+                      style={{ color: skill.color }}
+                    />
+                  )}
+                  <div className="text-white font-semibold text-center text-lg">
+                    {skill.name}
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </motion.div>
       </div>
