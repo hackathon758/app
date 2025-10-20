@@ -295,6 +295,34 @@ const Hero3D = ({ data }) => {
         .animate-blink {
           animation: blink 1s infinite;
         }
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%) skewX(-12deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-12deg);
+          }
+        }
+        .animate-shimmer {
+          animation: shimmer 3s infinite;
+        }
+        .perspective-container {
+          perspective: 1000px;
+        }
+        .photo-3d-container {
+          transform-style: preserve-3d;
+          transition: transform 0.3s ease-out;
+        }
+        .transform-gpu {
+          transform: translateZ(0);
+          backface-visibility: hidden;
+        }
+        .translate-z-10 {
+          transform: translateZ(10px);
+        }
+        .translate-z-5 {
+          transform: translateZ(5px);
+        }
       `}</style>
     </div>
   );
