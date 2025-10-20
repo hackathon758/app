@@ -53,6 +53,8 @@ const Skills3D = ({ data }) => {
     SiJavascript,
     SiPython,
     SiOpenjdk,
+    SiGo,
+    SiR,
     SiReact,
     SiNextdotjs,
     SiHtml5,
@@ -67,10 +69,15 @@ const Skills3D = ({ data }) => {
     SiOpenai,
     SiPytorch,
     SiPandas,
+    SiApachespark,
+    SiApacheairflow,
     SiGit,
     SiGithub,
     SiVscodium,
     SiDocker,
+    SiAmazonaws,
+    SiPowerbi,
+    SiTableau,
   };
 
   return (
