@@ -24,7 +24,7 @@ function App() {
         <Hero3D data={mockData.personalInfo} />
         <About data={{ ...mockData.personalInfo, stats: mockData.stats }} />
         <Skills3D data={mockData.skills} />
-        <Projects3D data={mockData.projects} />
+        <Projects3D data={mockData.projectCategories} />
         <Achievements data={mockData.achievements} />
         <Certifications data={mockData.certifications} />
         <Education data={mockData.education} />
