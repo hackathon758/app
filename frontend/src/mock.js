@@ -16,30 +16,36 @@ export const mockData = {
 
   skills: {
     programmingLanguages: [
-      { name: "JavaScript", level: 90, icon: "Code2" },
-      { name: "Python", level: 85, icon: "FileCode" },
-      { name: "Java", level: 80, icon: "Coffee" }
+      { name: "JavaScript", icon: "SiJavascript", color: "#F7DF1E" },
+      { name: "Python", icon: "SiPython", color: "#3776AB" },
+      { name: "Java", icon: "SiOpenjdk", color: "#007396" }
     ],
     frontend: [
-      { name: "React.js", level: 90, icon: "Layout" },
-      { name: "Next.js", level: 85, icon: "Layers" },
-      { name: "HTML5/CSS3", level: 95, icon: "Code" }
+      { name: "React.js", icon: "SiReact", color: "#61DAFB" },
+      { name: "Next.js", icon: "SiNextdotjs", color: "#000000" },
+      { name: "HTML5", icon: "SiHtml5", color: "#E34F26" },
+      { name: "CSS3", icon: "SiCss3", color: "#1572B6" },
+      { name: "Tailwind CSS", icon: "SiTailwindcss", color: "#06B6D4" }
     ],
     backend: [
-      { name: "Node.js", level: 88, icon: "Server" },
-      { name: "RESTful APIs", level: 90, icon: "Network" },
-      { name: "MongoDB", level: 85, icon: "Database" },
-      { name: "MySQL", level: 82, icon: "Database" }
+      { name: "Node.js", icon: "SiNodedotjs", color: "#339933" },
+      { name: "RESTful APIs", icon: "SiPostman", color: "#FF6C37" },
+      { name: "MongoDB", icon: "SiMongodb", color: "#47A248" },
+      { name: "MySQL", icon: "SiMysql", color: "#4479A1" },
+      { name: "FastAPI", icon: "SiFastapi", color: "#009688" }
     ],
     aiMl: [
-      { name: "Machine Learning", level: 80, icon: "Brain" },
-      { name: "Prompt Engineering", level: 85, icon: "MessageSquare" },
-      { name: "AI Integration", level: 88, icon: "Zap" }
+      { name: "Machine Learning", icon: "SiTensorflow", color: "#FF6F00" },
+      { name: "Prompt Engineering", icon: "SiOpenai", color: "#412991" },
+      { name: "AI Integration", icon: "SiPytorch", color: "#EE4C2C" },
+      { name: "Data Analytics", icon: "SiPandas", color: "#150458" }
     ],
     tools: [
-      { name: "Git", level: 90, icon: "GitBranch" },
-      { name: "Agile Development", level: 85, icon: "Users" },
-      { name: "Google Analytics", level: 80, icon: "BarChart" }
+      { name: "Git", icon: "SiGit", color: "#F05032" },
+      { name: "GitHub", icon: "SiGithub", color: "#181717" },
+      { name: "VS Code", icon: "SiVisualstudiocode", color: "#007ACC" },
+      { name: "Docker", icon: "SiDocker", color: "#2496ED" },
+      { name: "Postman", icon: "SiPostman", color: "#FF6C37" }
     ]
   },
 
