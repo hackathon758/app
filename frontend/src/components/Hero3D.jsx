@@ -68,47 +68,117 @@ const Hero3D = ({ data }) => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left order-2 lg:order-1"
           >
+            {/* Greeting Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 backdrop-blur-sm"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              <span className="text-cyan-400 text-sm font-medium tracking-wide">Available for Work</span>
+            </motion.div>
+
+            {/* Name with unique style */}
             <motion.h1
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 relative"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}
+              style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.03em' }}
             >
-              {data.name}
+              <span className="relative inline-block">
+                <span className="text-white relative z-10 drop-shadow-lg">{data.name}</span>
+                <motion.span
+                  className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-[#00d9ff]/40 via-[#ff6b6b]/40 to-transparent blur-sm"
+                  animate={{
+                    width: ["0%", "100%"],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    delay: 0.8,
+                  }}
+                />
+              </span>
             </motion.h1>
 
+            {/* Role with typing effect */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-4"
             >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#00d9ff] via-[#ff6b6b] to-[#ffd93d] bg-clip-text text-transparent mb-6 min-h-[3rem] flex items-center justify-center lg:justify-start">
-                <span>{displayedText}</span>
-                <span className="animate-blink ml-1">|</span>
-              </h2>
-              <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
-                {data.tagline}
+              <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
+                <div className="h-px w-8 bg-gradient-to-r from-transparent to-cyan-500"></div>
+                <h2 className="text-xl md:text-2xl font-semibold text-cyan-400/80 tracking-wider uppercase text-shadow-glow">
+                  <span className="inline-block px-2 py-1 rounded bg-cyan-500/5 border border-cyan-500/20">
+                    {displayedText}
+                    <span className="animate-blink ml-1 text-cyan-300">|</span>
+                  </span>
+                </h2>
+                <div className="h-px w-8 bg-gradient-to-l from-transparent to-cyan-500"></div>
+              </div>
+              
+              {/* Tagline with modern style */}
+              <p className="text-base md:text-lg text-gray-400/90 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
+                <span className="text-gray-300">{data.tagline}</span>
               </p>
             </motion.div>
 
+            {/* Stats or highlights */}
             <motion.div
-              className="flex gap-4 justify-center lg:justify-start flex-wrap"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="flex gap-6 mb-6 justify-center lg:justify-start flex-wrap"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
+                <span className="text-sm text-gray-400">
+                  <span className="text-white font-semibold">5+</span> Years Experience
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <span className="text-sm text-gray-400">
+                  <span className="text-white font-semibold">50+</span> Projects
+                </span>
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons with unique style */}
+            <motion.div
+              className="flex gap-3 justify-center lg:justify-start flex-wrap"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <a
                 href="#projects"
-                className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#0099cc] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105"
+                className="group relative px-6 py-3 bg-gradient-to-r from-[#00d9ff] to-[#0099cc] text-white text-sm font-semibold rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/30"
               >
-                View Projects
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                  View Projects
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
               <a
                 href="#contact"
-                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
+                className="group relative px-6 py-3 text-white text-sm font-semibold rounded-lg border border-cyan-500/30 hover:border-cyan-500/60 backdrop-blur-sm bg-cyan-500/5 hover:bg-cyan-500/10 transition-all duration-300 transform hover:scale-105"
               >
-                Contact Me
+                <span className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Contact Me
+                </span>
               </a>
             </motion.div>
           </motion.div>
