@@ -98,10 +98,11 @@ function ParticleWaves() {
 
 const ParticleBackground = () => {
   return (
-    <div className="fixed inset-0 w-full h-full -z-10">
+    <div className="fixed inset-0 w-full h-full -z-10" style={{ pointerEvents: 'none' }}>
       <Canvas
         camera={{ position: [0, 0, 10], fov: 75 }}
         style={{ background: 'transparent' }}
+        gl={{ antialias: false, powerPreference: 'low-power' }}
       >
         <ambientLight intensity={0.5} />
         <ParticleField />
