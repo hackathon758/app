@@ -249,136 +249,261 @@ const Hero3D = ({ data }) => {
             </motion.div>
           </motion.div>
 
-          {/* Right side - 3D Photo */}
+          {/* Right side - Advanced 3D Interactive Photo */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative order-1 lg:order-2 flex justify-center items-center"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
           >
-            <div className="relative w-full max-w-md mx-auto perspective-container">
-              {/* 3D Rotating Ring */}
+            <div ref={photoRef} className="relative w-full max-w-lg mx-auto perspective-deep">
+              
+              {/* Multiple 3D rotating rings with glass effect */}
               <motion.div
-                className="absolute inset-0 rounded-full border-4 border-[#00d9ff]/30"
-                animate={{
-                  rotateY: [0, 360],
-                  rotateX: [0, 15, 0],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{
+                className="absolute inset-0 rounded-full border-4 border-cyan-400/40 glass-ring"
+                style={{ 
+                  rotateY,
+                  rotateX,
                   transformStyle: 'preserve-3d',
                 }}
-              />
-
-              {/* Glowing Orb Effect */}
-              <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00d9ff]/20 via-[#ff6b6b]/20 to-[#ffd93d]/20 blur-2xl"
                 animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.5, 0.8, 0.5],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-
-              {/* Main 3D Photo Container */}
-              <motion.div
-                className="relative photo-3d-container group"
-                animate={{
-                  y: [0, -20, 0],
+                  scale: [1, 1.05, 1],
                 }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                whileHover={{
-                  scale: 1.05,
-                  rotateY: 5,
-                  rotateX: 5,
-                }}
-                style={{
+              />
+              
+              <motion.div
+                className="absolute inset-4 rounded-full border-4 border-purple-400/30 glass-ring"
+                style={{ 
+                  rotateY: useTransform(rotateY, (value) => -value),
+                  rotateX: useTransform(rotateX, (value) => -value),
                   transformStyle: 'preserve-3d',
                 }}
-              >
-                {/* Photo Frame with 3D depth */}
-                <div className="relative rounded-3xl overflow-hidden transform-gpu transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-cyan-500/50">
-                  {/* Multiple layered borders for 3D effect */}
-                  <div className="absolute inset-0 rounded-3xl border-4 border-[#00d9ff]/50 transform translate-z-10"></div>
-                  <div className="absolute inset-0 rounded-3xl border-4 border-[#ff6b6b]/30 transform translate-z-5"></div>
-                  
-                  {/* Gradient overlay for depth */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#00d9ff]/20 via-transparent to-[#ff6b6b]/20 z-10 mix-blend-overlay"></div>
-                  
-                  {/* Main Photo */}
-                  <motion.img
-                    src="https://customer-assets.emergentagent.com/job_950a8542-71cc-4b4a-b45b-2e9a9b73e0a6/artifacts/l18xnuc1_Gemini_Generated_Image_n92plcn92plcn92p.png"
-                    alt="Profile"
-                    className="w-full h-auto relative z-0 transform-gpu transition-transform duration-700 group-hover:scale-110"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                  />
+                animate={{
+                  scale: [1, 1.08, 1],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
 
-                  {/* Shimmer effect on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-shimmer"></div>
-                  </div>
+              {/* Multi-layered glowing orb effect */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00d9ff]/30 via-[#a78bfa]/30 to-[#ffd93d]/30 blur-3xl"
+                animate={{
+                  scale: [1, 1.15, 1],
+                  rotate: [0, 180, 360],
+                  opacity: [0.4, 0.7, 0.4],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              <motion.div
+                className="absolute inset-8 rounded-full bg-gradient-to-br from-[#ff6b6b]/20 via-[#00d9ff]/20 to-transparent blur-2xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [360, 180, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Main 3D Photo Container with Advanced Interactions */}
+              <motion.div
+                className="relative photo-3d-advanced group cursor-pointer"
+                style={{
+                  rotateY,
+                  rotateX,
+                  transformStyle: 'preserve-3d',
+                }}
+                animate={{
+                  y: [0, -15, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                whileHover={{
+                  scale: 1.08,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                {/* Glass morphism photo frame with multi-layer depth */}
+                <div className="relative rounded-3xl overflow-hidden transform-gpu shadow-2xl shadow-cyan-500/30 group-hover:shadow-cyan-500/60 transition-all duration-500">
+                  
+                  {/* Multiple layered glass borders for 3D depth */}
+                  <div className="absolute inset-0 rounded-3xl border-4 border-cyan-400/60 transform translate-z-20 glass-border"></div>
+                  <div className="absolute inset-1 rounded-3xl border-4 border-purple-400/40 transform translate-z-15 glass-border"></div>
+                  <div className="absolute inset-2 rounded-3xl border-4 border-blue-400/30 transform translate-z-10 glass-border"></div>
+                  
+                  {/* Gradient overlay for enhanced depth */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00d9ff]/30 via-transparent to-[#a78bfa]/30 z-10 mix-blend-overlay pointer-events-none"></div>
+                  
+                  {/* Animated gradient border effect */}
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl z-0"
+                    style={{
+                      background: 'linear-gradient(45deg, #00d9ff, #ff6b6b, #ffd93d, #a78bfa, #00d9ff)',
+                      backgroundSize: '400% 400%',
+                    }}
+                    animate={{
+                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                  
+                  {/* Main Profile Photo */}
+                  <motion.div className="relative z-20 p-1">
+                    <motion.img
+                      src="/profile-photo.png"
+                      alt="Professional Profile"
+                      className="w-full h-auto relative rounded-3xl transform-gpu transition-transform duration-700 group-hover:scale-105"
+                      style={{
+                        transformStyle: 'preserve-3d',
+                      }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                    />
+                  </motion.div>
+
+                  {/* Advanced shimmer and shine effects */}
+                  <motion.div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    animate={{
+                      background: [
+                        'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
+                        'linear-gradient(225deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
+                      ]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                    }}
+                  />
+                  
+                  {/* Glass reflection overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none"></div>
                 </div>
 
-                {/* Floating particles around photo */}
+                {/* Floating particles with enhanced 3D depth */}
                 <motion.div
-                  className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-[#00d9ff]/60 blur-sm"
-                  animate={{
-                    y: [0, -10, 0],
-                    x: [0, 5, 0],
+                  className="absolute -top-8 -right-8 w-12 h-12 rounded-full bg-gradient-to-r from-[#00d9ff] to-[#0099cc] blur-md shadow-xl shadow-cyan-500/50"
+                  style={{
+                    rotateY: useTransform(rotateY, (value) => value * 2),
+                    rotateX: useTransform(rotateX, (value) => value * 2),
+                    transformStyle: 'preserve-3d',
                   }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  style={{ transformStyle: 'preserve-3d' }}
-                />
-                <motion.div
-                  className="absolute -bottom-6 -left-6 w-12 h-12 rounded-full bg-[#ff6b6b]/40 blur-md"
                   animate={{
-                    y: [0, 10, 0],
-                    x: [0, -5, 0],
+                    y: [0, -20, 0],
+                    x: [0, 10, 0],
+                    scale: [1, 1.2, 1],
                   }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                <motion.div
+                  className="absolute -bottom-10 -left-10 w-16 h-16 rounded-full bg-gradient-to-r from-[#ff6b6b] to-[#ff4757] blur-lg shadow-2xl shadow-red-500/50"
+                  style={{
+                    rotateY: useTransform(rotateY, (value) => -value * 1.5),
+                    rotateX: useTransform(rotateX, (value) => -value * 1.5),
+                    transformStyle: 'preserve-3d',
+                  }}
+                  animate={{
+                    y: [0, 15, 0],
+                    x: [0, -10, 0],
+                    scale: [1, 1.3, 1],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
                     ease: "easeInOut",
                     delay: 1
                   }}
-                  style={{ transformStyle: 'preserve-3d' }}
                 />
+                
                 <motion.div
-                  className="absolute top-1/2 -right-8 w-6 h-6 rounded-full bg-[#ffd93d]/50 blur-sm"
+                  className="absolute top-1/3 -right-12 w-10 h-10 rounded-full bg-gradient-to-r from-[#ffd93d] to-[#f39c12] blur-md shadow-xl shadow-yellow-500/50"
+                  style={{
+                    rotateY: useTransform(rotateY, (value) => value * 3),
+                    rotateX: useTransform(rotateX, (value) => value * 3),
+                    transformStyle: 'preserve-3d',
+                  }}
                   animate={{
-                    y: [0, -15, 0],
-                    x: [0, 8, 0],
+                    y: [0, -25, 0],
+                    x: [0, 15, 0],
+                    rotate: [0, 360],
                   }}
                   transition={{
-                    duration: 3.5,
+                    duration: 6,
                     repeat: Infinity,
                     ease: "easeInOut",
                     delay: 0.5
                   }}
-                  style={{ transformStyle: 'preserve-3d' }}
+                />
+                
+                <motion.div
+                  className="absolute bottom-1/4 -left-8 w-8 h-8 rounded-full bg-gradient-to-r from-[#a78bfa] to-[#8b5cf6] blur-md shadow-xl shadow-purple-500/50"
+                  style={{
+                    rotateY: useTransform(rotateY, (value) => -value * 2.5),
+                    rotateX: useTransform(rotateX, (value) => -value * 2.5),
+                    transformStyle: 'preserve-3d',
+                  }}
+                  animate={{
+                    y: [0, 18, 0],
+                    x: [0, -12, 0],
+                    rotate: [360, 0],
+                  }}
+                  transition={{
+                    duration: 5.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.5
+                  }}
                 />
               </motion.div>
 
-              {/* 3D Shadow effect */}
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-8 bg-black/30 rounded-full blur-2xl"></div>
+              {/* Enhanced 3D shadow with multiple layers */}
+              <motion.div 
+                className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-4/5 h-12 rounded-full blur-3xl"
+                style={{
+                  background: 'radial-gradient(ellipse, rgba(0,0,0,0.5) 0%, transparent 70%)',
+                }}
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.5, 0.7, 0.5],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
             </div>
           </motion.div>
         </div>
