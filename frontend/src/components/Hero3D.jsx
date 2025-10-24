@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { Parallax } from 'react-parallax';
 
 const Hero3D = ({ data }) => {
   const roles = [
@@ -14,27 +15,46 @@ const Hero3D = ({ data }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(100);
+  
+  // 3D tilt effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), { stiffness: 100, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), { stiffness: 100, damping: 20 });
+  
+  const photoRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (photoRef.current) {
+      const rect = photoRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      mouseX.set((e.clientX - centerX) / rect.width);
+      mouseY.set((e.clientY - centerY) / rect.height);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   useEffect(() => {
     const currentRole = roles[currentRoleIndex];
 
     const handleTyping = () => {
       if (!isDeleting) {
-        // Typing forward
         if (displayedText.length < currentRole.length) {
           setDisplayedText(currentRole.substring(0, displayedText.length + 1));
           setTypingSpeed(100);
         } else {
-          // Pause at the end before deleting
           setTimeout(() => setIsDeleting(true), 2000);
         }
       } else {
-        // Deleting backward
         if (displayedText.length > 0) {
           setDisplayedText(currentRole.substring(0, displayedText.length - 1));
           setTypingSpeed(50);
         } else {
-          // Move to next role
           setIsDeleting(false);
           setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
         }
@@ -42,7 +62,6 @@ const Hero3D = ({ data }) => {
     };
 
     const timer = setTimeout(handleTyping, typingSpeed);
-
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, currentRoleIndex, typingSpeed, roles]);
 
