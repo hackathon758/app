@@ -509,83 +509,130 @@ const Hero3D = ({ data }) => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator with glass effect */}
       <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20"
+        animate={{ y: [0, 15, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2"></div>
+        <div className="w-8 h-12 border-2 border-white/40 rounded-full flex justify-center backdrop-blur-sm glass-morphism-light shadow-lg">
+          <motion.div 
+            className="w-2 h-4 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full mt-2 shadow-lg shadow-cyan-500/50"
+            animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
         </div>
       </motion.div>
 
-      {/* CSS for blob and typing animations */}
+      {/* Advanced CSS for glass-morphism and 3D effects */}
       <style jsx>{`
+        .glass-morphism-badge {
+          background: rgba(15, 23, 42, 0.4);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+        }
+        
+        .glass-morphism-inline {
+          background: rgba(15, 23, 42, 0.5);
+          backdrop-filter: blur(25px) saturate(180%);
+          -webkit-backdrop-filter: blur(25px) saturate(180%);
+        }
+        
+        .glass-stat-card {
+          background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.4));
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+        }
+        
+        .glass-button {
+          background: rgba(15, 23, 42, 0.3);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+        }
+        
+        .glass-button:hover {
+          background: rgba(0, 217, 255, 0.1);
+        }
+        
+        .glass-ring {
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .glass-border {
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .glass-morphism-light {
+          background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .text-shadow-3d {
+          text-shadow: 
+            2px 2px 4px rgba(0, 0, 0, 0.5),
+            4px 4px 8px rgba(0, 0, 0, 0.3),
+            0 0 40px rgba(0, 217, 255, 0.3);
+        }
+        
+        .glass-text {
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
         @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
+          0%, 100% {
+            transform: translate(0px, 0px) scale(1) rotate(0deg);
           }
           33% {
-            transform: translate(30px, -50px) scale(1.1);
+            transform: translate(40px, -60px) scale(1.15) rotate(120deg);
           }
           66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
+            transform: translate(-30px, 30px) scale(0.95) rotate(240deg);
           }
         }
+        
         .animate-blob {
-          animation: blob 7s infinite;
+          animation: blob 12s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         .animation-delay-2000 {
           animation-delay: 2s;
         }
+        
         .animation-delay-4000 {
           animation-delay: 4s;
         }
-        @keyframes blink {
-          0%, 50% {
-            opacity: 1;
-          }
-          51%, 100% {
-            opacity: 0;
-          }
+        
+        .animation-delay-6000 {
+          animation-delay: 6s;
         }
-        .animate-blink {
-          animation: blink 1s infinite;
+        
+        .perspective-deep {
+          perspective: 2000px;
+          perspective-origin: center;
         }
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%) skewX(-12deg);
-          }
-          100% {
-            transform: translateX(200%) skewX(-12deg);
-          }
-        }
-        .animate-shimmer {
-          animation: shimmer 3s infinite;
-        }
-        .perspective-container {
-          perspective: 1000px;
-        }
-        .photo-3d-container {
+        
+        .photo-3d-advanced {
           transform-style: preserve-3d;
-          transition: transform 0.3s ease-out;
+          transition: transform 0.1s ease-out;
         }
+        
         .transform-gpu {
           transform: translateZ(0);
           backface-visibility: hidden;
+          -webkit-font-smoothing: subpixel-antialiased;
         }
+        
+        .translate-z-20 {
+          transform: translateZ(20px);
+        }
+        
+        .translate-z-15 {
+          transform: translateZ(15px);
+        }
+        
         .translate-z-10 {
           transform: translateZ(10px);
-        }
-        .translate-z-5 {
-          transform: translateZ(5px);
-        }
-        .text-shadow-glow {
-          text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
         }
       `}</style>
     </div>
