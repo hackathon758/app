@@ -57,6 +57,68 @@ code {
     backface-visibility: hidden;
 }
 
+/* Heavy Glass Effect with Rainbow Edge */
+.glass-heavy {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+
+.glass-heavy::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    padding: 3px;
+    background: linear-gradient(45deg, 
+        #00d9ff 0%, 
+        #ff00ff 25%, 
+        #00ff88 50%, 
+        #ff0088 75%, 
+        #00d9ff 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: rainbow-rotate 3s linear infinite;
+}
+
+@keyframes rainbow-rotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Holographic effect */
+.holographic-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+    );
+    background-size: 200% 200%;
+    animation: hologram-sweep 3s ease-in-out infinite;
+}
+
+@keyframes hologram-sweep {
+    0%, 100% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+}
+
 /* Improved scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
