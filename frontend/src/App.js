@@ -6,7 +6,6 @@ import { Toaster } from "./components/ui/toaster";
 
 // Components
 import GlassNavbar from "./components/GlassNavbar";
-import ParticleBackground from "./components/ParticleBackground";
 import Hero3D from "./components/Hero3D";
 import About from "./components/About";
 import Skills3D from "./components/Skills3D";
@@ -21,7 +20,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App bg-[#0f172a] relative">
-        <ParticleBackground />
         <GlassNavbar data={mockData.personalInfo} />
         <Hero3D data={mockData.personalInfo} />
         <About data={{ ...mockData.personalInfo, stats: mockData.stats }} />
