@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import ParticleEffect from './ParticleEffect';
 import {
   SiJavascript,
   SiPython,
@@ -31,7 +32,7 @@ import {
   SiTableau,
 } from 'react-icons/si';
 import { FaChartLine } from 'react-icons/fa';
-import { Code, Cpu, Sparkles } from 'lucide-react';
+import { Code, Cpu, Zap } from 'lucide-react';
 
 const Skills3D = ({ data }) => {
   const [ref, inView] = useInView({
