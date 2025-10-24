@@ -66,16 +66,20 @@ const Hero3D = ({ data }) => {
   }, [displayedText, isDeleting, currentRoleIndex, typingSpeed, roles]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1a1a2e] to-[#16213e]">
-      {/* Animated background elements */}
+    <div id="home" className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1a1a2e] to-[#16213e]">
+      {/* Animated background with glass effect */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-[#00d9ff] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-[#ff6b6b] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-[#ffd93d] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-20 left-20 w-[32rem] h-[32rem] bg-[#00d9ff] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 animate-blob"></div>
+        <div className="absolute top-40 right-20 w-[32rem] h-[32rem] bg-[#ff6b6b] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-[32rem] h-[32rem] bg-[#ffd93d] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-1/2 left-1/4 w-[28rem] h-[28rem] bg-[#a78bfa] rounded-full mix-blend-multiply filter blur-[100px] opacity-15 animate-blob animation-delay-6000"></div>
       </div>
 
-      {/* Grid pattern overlay */}
+      {/* Enhanced grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnpNMCAyNGMwLTMuMzE0IDIuNjg2LTYgNi02czYgMi42ODYgNiA2LTIuNjg2IDYtNiA2LTYtMi42ODYtNi02em0zNiAzNmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iIzAwZDlmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9nPjwvc3ZnPg==')] opacity-30"></div>
+      
+      {/* Glass morphism overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/20"></div>
 
       {/* Content Overlay */}
       <div className="relative z-10 h-full flex items-center justify-center">
