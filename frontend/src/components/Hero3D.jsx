@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Parallax } from 'react-parallax';
+import MatrixRain from './MatrixRain';
 
 const Hero3D = ({ data }) => {
   const roles = [
