@@ -42,13 +42,15 @@ const Skills3D = ({ data }) => {
 
   const [selectedCategory, setSelectedCategory] = useState('frontend');
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [rotation, setRotation] = useState(0);
+  const carouselRef = useRef(null);
 
   const categories = [
-    { key: 'frontend', label: 'Frontend', color: 'from-[#00d9ff] to-[#0099cc]', icon: '🎨' },
-    { key: 'backend', label: 'Backend', color: 'from-[#ff6b6b] to-[#cc5555]', icon: '⚙️' },
-    { key: 'programmingLanguages', label: 'Languages', color: 'from-[#ffd93d] to-[#ccad31]', icon: '💻' },
-    { key: 'aiMl', label: 'AI/ML', color: 'from-[#6bcf7f] to-[#55a665]', icon: '🤖' },
-    { key: 'tools', label: 'Tools', color: 'from-[#ff8c42] to-[#cc7035]', icon: '🛠️' },
+    { key: 'frontend', label: 'Frontend', color: 'from-cyan-400 via-blue-500 to-purple-600', icon: '🎨', accentColor: '#00d9ff' },
+    { key: 'backend', label: 'Backend', color: 'from-red-400 via-pink-500 to-purple-600', icon: '⚙️', accentColor: '#ff6b6b' },
+    { key: 'programmingLanguages', label: 'Languages', color: 'from-yellow-400 via-orange-500 to-red-500', icon: '💻', accentColor: '#ffd93d' },
+    { key: 'aiMl', label: 'AI/ML', color: 'from-green-400 via-emerald-500 to-teal-500', icon: '🤖', accentColor: '#6bcf7f' },
+    { key: 'tools', label: 'Tools', color: 'from-orange-400 via-red-500 to-pink-500', icon: '🛠️', accentColor: '#ff8c42' },
   ];
 
   // Icon mapping
@@ -82,6 +84,32 @@ const Skills3D = ({ data }) => {
     SiTableau,
     FaChartLine,
   };
+
+  // Continuous rotation animation
+  useEffect(() => {
+    if (!inView) return;
+    
+    let animationFrame;
+    let startTime = Date.now();
+    
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const newRotation = (elapsed / 50) % 360; // Slow continuous rotation
+      setRotation(newRotation);
+      animationFrame = requestAnimationFrame(animate);
+    };
+    
+    animationFrame = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [inView]);
+
+  const currentCategory = categories.find(cat => cat.key === selectedCategory);
+  const skills = data[selectedCategory] || [];
 
   return (
     <section id="skills" className="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0f172a] relative overflow-hidden">
