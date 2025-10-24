@@ -330,135 +330,119 @@ const Skills3D = ({ data }) => {
                       onMouseEnter={() => setHoveredSkill(index)}
                       onMouseLeave={() => setHoveredSkill(null)}
                     >
-                      {/* Glass card with rainbow edge glow */}
+                      {/* Icon container without card */}
                       <motion.div
-                        className="relative w-48 h-48 rounded-3xl overflow-hidden group"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
-                          backdropFilter: 'blur(40px) saturate(200%)',
-                          border: '3px solid transparent',
-                          backgroundImage: `
-                            linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)),
-                            linear-gradient(
-                              ${angle}deg,
-                              ${skill.color},
-                              #00d9ff,
-                              #ff00ff,
-                              ${skill.color}
-                            )
-                          `,
-                          backgroundOrigin: 'border-box',
-                          backgroundClip: 'padding-box, border-box',
-                          boxShadow: hoveredSkill === index 
-                            ? `0 0 60px ${skill.color}80, inset 0 0 30px ${skill.color}30`
-                            : `0 20px 60px rgba(0, 0, 0, 0.3), 0 0 30px ${skill.color}40`,
-                        }}
-                        animate={{
-                          boxShadow: hoveredSkill === index 
-                            ? [
-                                `0 0 60px ${skill.color}80, inset 0 0 30px ${skill.color}30`,
-                                `0 0 80px ${skill.color}FF, inset 0 0 50px ${skill.color}50`,
-                                `0 0 60px ${skill.color}80, inset 0 0 30px ${skill.color}30`,
-                              ]
-                            : undefined,
+                        className="relative group flex flex-col items-center gap-3"
+                        whileHover={{
+                          scale: 1.3,
                         }}
                         transition={{
-                          duration: 1.5,
-                          repeat: hoveredSkill === index ? Infinity : 0,
-                        }}
-                        whileHover={{
-                          scale: 1.15,
+                          duration: 0.3,
                         }}
                       >
-                        {/* Animated holographic overlay */}
+                        {/* Glow effect behind icon */}
                         <motion.div
-                          className="absolute inset-0 opacity-20"
+                          className="absolute inset-0 rounded-full blur-3xl"
                           style={{
-                            background: `linear-gradient(45deg, transparent 30%, ${skill.color}60 50%, transparent 70%)`,
-                            backgroundSize: '200% 200%',
+                            background: `radial-gradient(circle, ${skill.color}80, transparent)`,
+                            opacity: hoveredSkill === index ? 1 : 0.4,
+                            width: '200%',
+                            height: '200%',
+                            left: '-50%',
+                            top: '-50%',
                           }}
                           animate={{
-                            backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+                            scale: hoveredSkill === index ? [1, 1.2, 1] : 1,
+                            opacity: hoveredSkill === index ? [0.6, 1, 0.6] : 0.4,
                           }}
                           transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: 'linear',
+                            duration: 2,
+                            repeat: hoveredSkill === index ? Infinity : 0,
                           }}
                         />
                         
-                        {/* Content */}
-                        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-6 gap-4">
-                          {/* Icon container */}
-                          <motion.div
-                            className="relative"
-                            animate={{
-                              y: hoveredSkill === index ? [0, -10, 0] : 0,
-                            }}
-                            transition={{
-                              duration: 1,
-                              repeat: hoveredSkill === index ? Infinity : 0,
-                            }}
-                          >
-                            <div className="relative">
-                              {IconComponent && (
-                                <IconComponent 
-                                  className="w-20 h-20" 
-                                  style={{ 
-                                    color: skill.color,
-                                    filter: `drop-shadow(0 0 20px ${skill.color})`,
-                                  }}
-                                />
-                              )}
-                              
-                              {/* Rotating ring around icon */}
-                              {hoveredSkill === index && (
-                                <motion.div
-                                  className="absolute inset-0 rounded-full border-2"
-                                  style={{
-                                    borderColor: skill.color,
-                                    width: '120%',
-                                    height: '120%',
-                                    left: '-10%',
-                                    top: '-10%',
-                                  }}
-                                  animate={{
-                                    rotate: 360,
-                                    scale: [1, 1.3, 1],
-                                    opacity: [0.8, 0.3, 0.8],
-                                  }}
-                                  transition={{
-                                    rotate: { duration: 2, repeat: Infinity, ease: 'linear' },
-                                    scale: { duration: 1, repeat: Infinity },
-                                    opacity: { duration: 1, repeat: Infinity },
-                                  }}
-                                />
-                              )}
-                            </div>
-                          </motion.div>
+                        {/* Icon */}
+                        <motion.div
+                          className="relative z-10"
+                          animate={{
+                            y: hoveredSkill === index ? [0, -15, 0] : 0,
+                            rotate: hoveredSkill === index ? [0, 10, -10, 0] : 0,
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: hoveredSkill === index ? Infinity : 0,
+                          }}
+                        >
+                          {IconComponent && (
+                            <IconComponent 
+                              className="w-20 h-20 md:w-24 md:h-24" 
+                              style={{ 
+                                color: skill.color,
+                                filter: `drop-shadow(0 0 ${hoveredSkill === index ? '30px' : '15px'} ${skill.color})`,
+                              }}
+                            />
+                          )}
                           
-                          {/* Skill name */}
-                          <motion.div 
-                            className="text-white font-bold text-center text-lg leading-tight"
-                            style={{
-                              textShadow: `0 0 20px ${skill.color}80`,
-                            }}
-                          >
-                            {skill.name}
-                          </motion.div>
-                          
-                          {/* Tech badge */}
-                          <motion.div
-                            className="px-3 py-1 rounded-full text-xs font-semibold"
-                            style={{
-                              background: `${skill.color}30`,
-                              color: '#ffffff',
-                              border: `1px solid ${skill.color}60`,
-                            }}
-                          >
-                            EXPERT
-                          </motion.div>
-                        </div>
+                          {/* Rotating ring around icon */}
+                          {hoveredSkill === index && (
+                            <>
+                              <motion.div
+                                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2"
+                                style={{
+                                  borderColor: skill.color,
+                                  width: '150%',
+                                  height: '150%',
+                                }}
+                                animate={{
+                                  rotate: 360,
+                                  scale: [1, 1.4, 1],
+                                  opacity: [0.8, 0.3, 0.8],
+                                }}
+                                transition={{
+                                  rotate: { duration: 2, repeat: Infinity, ease: 'linear' },
+                                  scale: { duration: 1.5, repeat: Infinity },
+                                  opacity: { duration: 1.5, repeat: Infinity },
+                                }}
+                              />
+                              <motion.div
+                                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2"
+                                style={{
+                                  borderColor: skill.color,
+                                  width: '180%',
+                                  height: '180%',
+                                }}
+                                animate={{
+                                  rotate: -360,
+                                  scale: [1.2, 1.6, 1.2],
+                                  opacity: [0.6, 0.2, 0.6],
+                                }}
+                                transition={{
+                                  rotate: { duration: 3, repeat: Infinity, ease: 'linear' },
+                                  scale: { duration: 2, repeat: Infinity },
+                                  opacity: { duration: 2, repeat: Infinity },
+                                }}
+                              />
+                            </>
+                          )}
+                        </motion.div>
+                        
+                        {/* Skill name with glass background */}
+                        <motion.div 
+                          className="text-white font-bold text-center text-base leading-tight px-4 py-2 rounded-xl relative z-10"
+                          style={{
+                            textShadow: `0 0 20px ${skill.color}80`,
+                            background: hoveredSkill === index 
+                              ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))'
+                              : 'transparent',
+                            backdropFilter: hoveredSkill === index ? 'blur(20px)' : 'none',
+                            border: hoveredSkill === index ? `1px solid ${skill.color}40` : 'none',
+                          }}
+                          animate={{
+                            opacity: hoveredSkill === index ? 1 : 0.8,
+                          }}
+                        >
+                          {skill.name}
+                        </motion.div>
                         
                         {/* Particle explosion effect */}
                         <AnimatePresence>
